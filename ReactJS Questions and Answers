@@ -1,0 +1,122 @@
+1. What is Virtual DOM?
+A lightweight in-memory tree representing the real DOM. React updates the Virtual DOM first, then uses diffing and reconciliation to update only the necessary parts of the actual DOM.
+
+2. Hooks used:
+useState, useEffect, useContext, useReducer, useRef, useCallback, useMemo
+
+3. useContext example:
+js
+Copy
+Edit
+const ThemeContext = React.createContext();
+
+function App() {
+  return (
+    <ThemeContext.Provider value="dark">
+      <Button />
+    </ThemeContext.Provider>
+  );
+}
+function Button() {
+  const theme = useContext(ThemeContext);
+  return <button>{theme}</button>;
+}
+4. Custom hooks?
+js
+Copy
+Edit
+function useCounter(initial) {
+  const [count, setCount] = useState(initial);
+  return { count, increment: () => setCount(count + 1) };
+}
+5. useState vs useReducer
+useState: Simpler state updates.
+
+useReducer: Used for complex state logic (like Redux reducer).
+
+6. useMemo vs useCallback
+useMemo: Memoizes values.
+
+useCallback: Memoizes functions.
+
+7. Why Hooks?
+Avoids class components, enables reusable logic, and easier state and lifecycle management.
+
+8. Class vs Functional
+Functional components are:
+
+Simpler
+
+Perform better
+
+Use hooks for state & lifecycle
+
+9. HOC (Higher Order Component):
+A function that takes a component and returns a new component with added functionality.
+
+10. Controlled vs Uncontrolled:
+Controlled: React manages form data.
+
+Uncontrolled: DOM manages form state.
+
+11. Features of ReactJS:
+Virtual DOM
+
+Components
+
+Hooks
+
+Unidirectional data flow
+
+JSX
+
+12. What is state in React?
+Data managed within a component.
+
+13. Props vs State
+Props: Read-only, passed from parent.
+
+State: Mutable, internal to component.
+
+14. Error Handling:
+Use Error Boundaries, try/catch, and useEffect cleanup.
+
+15. Performance Optimization:
+Code splitting
+
+Lazy loading
+
+Memoization
+
+Pure components
+
+16. Angular vs React
+Angular	React
+Full framework	Library
+Two-way data binding	One-way
+Uses TypeScript	Uses JSX
+17. useEffect hook?
+Handles side-effects (like API calls).
+
+18. Pure components?
+Avoids re-render if props/state haven't changed.
+
+19. Keys in React?
+Helps identify which items changed in lists; boosts performance.
+
+20. SPA (Single Page Applications):
+One HTML page; content dynamically updated using JS routing (React Router).
+
+✅ React Code Examples
+Search form:
+
+
+const [query, setQuery] = useState('');
+const result = array.filter(item => item.includes(query));
+Counter logic:
+
+js
+Copy
+Edit
+const [count, setCount] = useState(0);
+<button onClick={() => count < 20 && setCount(count + 1)}>+</button>
