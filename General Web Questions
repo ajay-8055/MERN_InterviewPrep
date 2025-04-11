@@ -1,0 +1,19 @@
+1. Web Storage
+localStorage: Persistent
+
+sessionStorage: Until tab closed
+
+2. What happens when URL is typed?
+DNS lookup → Server request → Response → Rendered by browser
+
+3. What is CORS?
+Cross-Origin Resource Sharing. Allows controlled access to resources from different origins.
+
+4. Submit form with no internet
+Use Service Workers and IndexedDB to store offline and sync later.
+
+5. Product ads across apps?
+Achieved using cookies, localStorage, and Facebook/Google tracking pixels
+
+6. Purpose of HTTPS
+Secure communication using SSL/TLS encryption.
