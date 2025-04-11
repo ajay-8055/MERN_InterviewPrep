@@ -1,0 +1,29 @@
+1. What is MongoDB?
+A NoSQL, document-oriented database.
+
+2. MongoDB vs SQL
+SQL	MongoDB
+Tables	Collections
+Rows	Documents
+Schema	Schema-less
+3. Sharding?
+Distributes data across multiple servers to improve performance.
+
+4. Performance for large search?
+Indexing
+
+Aggregation pipelines
+
+Limit and projection
+
+5. Why MongoDB?
+Flexible schema
+
+Scalable
+
+JSON-like documents
+
+6. Relations in MongoDB
+Referencing using ObjectIDs
+
+Embedding documents
