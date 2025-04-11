@@ -1,0 +1,112 @@
+1. What is NPM?
+Node Package Manager — tool to manage libraries and dependencies.
+
+2. Event Loop?
+Handles async operations using phases (timers, I/O, etc.).
+
+3. Multiple requests in NodeJS?
+Handled using non-blocking I/O and event loop.
+
+4. Why NodeJS is fast?
+Because of its V8 engine and event-driven non-blocking architecture.
+
+5. Asynchronous programming?
+Allows I/O tasks to run in background without blocking the main thread.
+
+6. Callback Hell?
+Nested callbacks causing messy code.
+
+7. Handle async?
+Callbacks
+
+Promises
+
+async/await
+
+8. What are Promises?
+Handle async results. Has .then() and .catch().
+
+9. What is assert?
+Used for unit testing to assert expected conditions.
+
+10. Promise vs Async/Await
+Promises are cleaner than callbacks.
+
+async/await makes code synchronous-like.
+
+11. Sequential async calls?
+Use async/await in for...of loop.
+
+12. Event Emitters
+Emit and listen for custom events.
+
+js
+Copy
+Edit
+emitter.emit('data');
+emitter.on('data', () => {});
+13. Why use NodeJS?
+Non-blocking I/O
+
+Fast development
+
+Great for microservices and REST APIs
+
+14. fork() vs spawn()
+Both run child processes:
+
+fork(): Used to run new NodeJS instance.
+
+spawn(): Runs any system command.
+
+15. Challenges faced in NodeJS?
+Managing async code
+
+Memory leaks
+
+Error handling
+
+16. What is ExpressJS?
+Minimal NodeJS framework to build APIs quickly.
+
+17. Crypto Algorithms?
+SHA256
+
+Bcrypt
+
+HMAC
+
+18. Authentication vs Authorization
+Auth: Verifying user
+
+Authorization: Verifying access rights
+
+19. Security measures?
+JWT
+
+HTTPS
+
+Helmet.js
+
+Input validation
+
+20. Node Packages worked with?
+express
+
+mongoose
+
+bcrypt
+
+cors
+
+jsonwebtoken
+
+multer
+
+dotenv
+
+21. Microservices?
+Yes — Pros: Scalable, independent deployment. Cons: Complex architecture.
+
+22. When to use NodeJS?
+Real-time apps, APIs, microservices, chats, etc.
