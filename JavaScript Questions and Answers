@@ -1,0 +1,173 @@
+1. How does JavaScript work?
+JavaScript is a single-threaded, interpreted language that runs in the browser or on the server (Node.js). It uses a JavaScript engine (e.g., V8 in Chrome) to convert code into machine-understandable format. It uses an event loop to handle asynchronous tasks.
+
+2. What do you mean by DOM and its importance?
+DOM (Document Object Model) is a tree-like structure of HTML elements. JavaScript uses DOM to manipulate content, structure, and styles dynamically in a webpage.
+
+3. Scope of variables?
+Global Scope – Accessible anywhere.
+
+Local/Function Scope – Available inside the function.
+
+Block Scope – Variables declared using let and const are block-scoped.
+
+4. What is hoisting?
+Hoisting is JavaScript’s default behavior of moving declarations to the top of the scope. var variables and functions are hoisted, but not let and const.
+
+5. Event bubbling and throttling?
+Event bubbling: Events propagate from the child to the parent.
+
+Throttling: Limits the number of times a function is executed over time.
+
+6. What are ES6 features?
+let, const
+
+Arrow functions
+
+Template literals
+
+Classes
+
+Destructuring
+
+Spread/rest operator
+
+Promises
+
+Modules (import/export)
+
+Map, Set
+
+7. Differences between let, const, and var
+Keyword	Scope	Re-declare	Hoisted	Mutable
+var	Function	Yes	Yes	Yes
+let	Block	No	No	Yes
+const	Block	No	No	No
+8. What is closure?
+A closure is a function that remembers its outer variables even after the outer function has executed.
+
+
+function outer() {
+  let count = 0;
+  return function () {
+    count++;
+    console.log(count);
+  }
+}
+const counter = outer();
+counter(); // 1
+counter(); // 2
+9. Difference between forEach and map
+forEach: Iterates without returning a new array.
+
+map: Returns a new array with transformed values.
+
+10. Loop methods used
+for, while, do...while
+
+forEach
+
+map
+
+filter
+
+reduce
+
+some, every
+
+for...of, for...in
+
+11. Event loop?
+It manages asynchronous tasks by placing them in the callback queue and executing them after the call stack is clear.
+
+12. Immediately Invoked Function Expression (IIFE)?
+A function that runs immediately after its definition.
+
+
+(function () {
+  console.log('IIFE executed');
+})();
+13. What is the set() method?
+Used in Set objects to add unique values.
+
+
+let mySet = new Set();
+mySet.add(1);
+14. What is a scope chain?
+It's the access hierarchy of scopes where inner functions can access variables from outer functions.
+
+15. Lexical scope?
+Determined at compile time, where a variable’s scope is defined by its position in the code.
+
+16. Difference: undefined vs not defined
+undefined: Variable declared but not assigned.
+
+not defined: Variable is not declared at all.
+
+17. setTimeout() vs setInterval()
+setTimeout(): Executes once after delay.
+
+setInterval(): Repeats execution at regular intervals.
+
+18. slice() vs splice()
+slice(start, end): Returns a shallow copy.
+
+splice(index, count): Modifies original array, can add/remove items.
+
+19. Ways to create objects
+Object literals: { key: value }
+
+new Object()
+
+Object.create()
+
+ES6 Classes
+
+20. What is destructuring?
+Extract values from arrays or objects.
+
+
+const { name, age } = user;
+21. Why classes when we have prototypes?
+Classes provide syntactic sugar over prototype-based inheritance, making OOP easier to understand and use.
+
+22. What is inheritance?
+When an object inherits properties/methods from another object or class.
+
+23. Function vs Method
+Function: Standalone block of code.
+
+Method: Function attached to an object.
+
+24. What is window and this?
+window: Global object in browser.
+
+this: Refers to context in which a function is executed.
+
+25. What is a generator?
+A function that can be paused and resumed using function* and yield.
+
+
+function* gen() {
+  yield 1;
+  yield 2;
+}
+✅ Example JavaScript Problems
+Return sport = "cricket" from array:
+
+
+const sports = [{ name: 'cricket' }, { name: 'football' }];
+const cricketSports = sports.filter(s => s.name === 'cricket');
+Swap two numbers without temp:
+
+
+let a = 5, b = 10;
+a = a + b;
+b = a - b;
+a = a - b;
+Palindrome function:
+
+
+function isPalindrome(str) {
+  return str === str.split('').reverse().join('');
+}
