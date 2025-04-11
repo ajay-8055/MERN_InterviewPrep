@@ -1,0 +1,55 @@
+1. Semantic vs Non-semantic tags
+Semantic: <header>, <article>
+
+Non-semantic: <div>, <span>
+
+2. div vs span
+div: Block-level
+
+span: Inline
+
+3. New HTML features
+<video>, <audio>, <canvas>, semantic tags
+
+4. Embed other page?
+Using <iframe>
+
+5. Worked on SCSS
+Yes – SCSS allows variables, nesting, mixins.
+
+6. Responsive design
+Media queries
+
+Flexbox/Grid
+
+7. Align elements same line
+display: flex
+
+inline-block
+
+8. Center element
+css
+Copy
+Edit
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+9. display: none vs hidden
+display: none: Removes from layout.
+
+visibility: hidden: Takes space but hidden.
+
+10. CSS Selectors
+Class .class, ID #id, element div, attribute [type='text']
+
+11. Pseudo classes
+:hover, :focus, :nth-child()
+
+12. Ways to write CSS
+Inline
+
+Internal
+
+External stylesheet
