@@ -1,0 +1,220 @@
+**MySQL Advanced Interview Questions and Answers**
+
+---
+
+**1. How do you optimize a high-load MySQL database for performance and stability?**
+
+**Answer:**
+Optimizing MySQL under high load involves:
+- **Indexing:** Create indexes on columns used in WHERE, JOIN, and ORDER BY clauses.
+- **Query optimization:** Use EXPLAIN to identify bottlenecks.
+- **Connection handling:** Use connection pooling.
+- **MySQL configuration tuning:** Adjust `innodb_buffer_pool_size`, `query_cache_size`, `max_connections` etc.
+- **Partitioning:** Helps with large tables by dividing them into smaller pieces.
+- **Read/Write splitting:** Use master-slave replication to separate reads and writes.
+
+**Example:**
+```sql
+ALTER TABLE orders ADD INDEX idx_customer_id (customer_id);
+```
+
+---
+
+**2. What are MySQL Views and how can they be used efficiently?**
+
+**Answer:**
+Views are virtual tables representing the result of a stored query. They simplify complex queries and improve security by exposing only necessary data.
+
+**Efficient Usage Tips:**
+- Use `WITH CHECK OPTION` to enforce constraints.
+- Avoid SELECT * in views.
+- Index underlying tables, not views.
+
+**Example:**
+```sql
+CREATE VIEW active_users AS
+SELECT id, name FROM users WHERE status = 'active';
+```
+
+---
+
+**3. What are common bottlenecks in high-traffic MySQL applications?**
+
+**Answer:**
+- Missing indexes
+- Lock contention
+- Inefficient queries
+- Too many connections
+- Poor schema design
+
+**Solution Example:**
+Analyze slow queries:
+```sql
+SET GLOBAL slow_query_log = 1;
+SHOW VARIABLES LIKE 'slow_query_log_file';
+```
+
+---
+
+**4. Explain InnoDB vs MyISAM in high load environments.**
+
+**Answer:**
+- **InnoDB** is preferred for high load due to:
+  - Row-level locking
+  - ACID compliance
+  - Crash recovery
+- **MyISAM** is faster for read-heavy workloads but lacks transaction support and uses table-level locking.
+
+---
+
+**5. How do you handle replication lag in MySQL?**
+
+**Answer:**
+- Monitor `Seconds_Behind_Master`
+- Optimize queries on the slave
+- Use semi-sync replication
+- Reduce write load on the master
+
+**Example:**
+```sql
+SHOW SLAVE STATUS\G
+```
+
+---
+
+**6. How can you ensure high availability in MySQL?**
+
+**Answer:**
+- Use replication (master-slave or master-master)
+- Implement MySQL Group Replication
+- Use ProxySQL or HAProxy for failover
+- Deploy on managed solutions (e.g., AWS RDS Multi-AZ)
+
+---
+
+**7. Explain the use of EXPLAIN and how to interpret it.**
+
+**Answer:**
+EXPLAIN shows how MySQL executes a query. Key columns:
+- `type` (ALL, index, range, ref, const, eq_ref, system)
+- `key` (used index)
+- `rows` (estimated rows scanned)
+
+**Example:**
+```sql
+EXPLAIN SELECT * FROM orders WHERE customer_id = 101;
+```
+
+---
+
+**8. What are some strategies to reduce locking contention?**
+
+**Answer:**
+- Keep transactions short
+- Use proper indexing
+- Access tables in a consistent order
+- Use lower isolation levels if appropriate
+
+---
+
+**9. How does the Query Cache work in MySQL?**
+
+**Answer:**
+- Caches SELECT results to reduce query execution
+- Must be enabled and tuned via `query_cache_type` and `query_cache_size`
+- Not recommended for frequently updated tables
+
+---
+
+**10. What tools do you use to monitor MySQL performance?**
+
+**Answer:**
+- MySQL Workbench
+- Percona Toolkit
+- pt-query-digest
+- slow query log
+- Performance Schema
+- Monitoring via Grafana + Prometheus
+
+---
+
+**11. How do you optimize complex JOIN queries in MySQL?**
+
+**Answer:**
+- Use indexed columns for JOIN conditions
+- Filter rows early using WHERE clause
+- Avoid joining too many large tables in a single query
+- Use subqueries or CTEs to break down logic
+
+**Example:**
+```sql
+SELECT o.id, c.name
+FROM orders o
+JOIN customers c ON o.customer_id = c.id
+WHERE o.order_date >= '2024-01-01';
+```
+
+---
+
+**12. How do Triggers work in MySQL and when should they be used?**
+
+**Answer:**
+Triggers are actions automatically performed when specified database events occur (INSERT, UPDATE, DELETE).
+
+**Best Use Cases:**
+- Auditing
+- Validation
+- Automatic timestamping
+
+**Example:**
+```sql
+CREATE TRIGGER before_insert_user
+BEFORE INSERT ON users
+FOR EACH ROW SET NEW.created_at = NOW();
+```
+
+---
+
+**13. How do you perform advanced aggregation in MySQL?**
+
+**Answer:**
+Use `GROUP BY`, `HAVING`, and aggregate functions like COUNT, SUM, AVG.
+
+**Example:**
+```sql
+SELECT customer_id, COUNT(*) AS total_orders, SUM(amount) AS total_amount
+FROM orders
+GROUP BY customer_id
+HAVING total_amount > 1000;
+```
+
+---
+
+**14. How are subqueries used in MySQL and what are best practices?**
+
+**Answer:**
+Subqueries allow nesting of one query inside another. Use them to filter data dynamically.
+
+**Best Practices:**
+- Prefer `EXISTS`/`IN` over correlated subqueries when possible
+- Use derived tables for better readability
+
+**Example:**
+```sql
+SELECT name FROM customers
+WHERE id IN (SELECT customer_id FROM orders WHERE amount > 500);
+```
+
+---
+
+**15. What is a Common Table Expression (CTE) and how is it used in MySQL?**
+**Answer:**
+CTEs provide temporary result sets that can be referenced within a query.
+
+**Example:**
+```sql
+WITH high_value_orders AS (
+  SELECT * FROM orders WHERE amount > 1000
+)
+SELECT * FROM high_value_orders WHERE order_date >= '2024-01-01';
+```
